@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Murtaza Salon | Professional Hair & Grooming Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col justify-between">
+
+    <!-- 3D Particle Galaxy Canvas Background -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Header / Navbar -->
+    <header class="glass-card sticky top-0 z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black font-bold text-xl shadow-lg shadow-gold-500/30">
+                    AM
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-wider text-white">ALI MURTAZA</span>
+                    <span class="block text-xs text-gold-400 font-semibold uppercase tracking-widest">Salon & Grooming</span>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#home" class="hover:text-gold-400 transition">Home</a>
+                <a href="#gallery" class="hover:text-gold-400 transition">Gallery</a>
+                <a href="#services" class="hover:text-gold-400 transition">Services & Prices</a>
+                <a href="#appointment" class="hover:text-gold-400 transition">Book Online</a>
+                <a href="#payment" class="hover:text-gold-400 transition">Payment</a>
+                <button onclick="openAdminModal()" class="bg-gold-500 hover:bg-gold-600 text-black px-4 py-2 rounded-lg font-bold transition flex items-center gap-2 shadow-lg shadow-gold-500/20">
+                    <i class="fa-solid fa-lock text-xs"></i> Admin Portal
+                </button>
+            </nav>
+            <button class="md:hidden text-white text-2xl focus:outline-none" onclick="toggleMobileMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 bg-gray-900 border-b border-gray-800">
+            <a href="#home" class="block py-2 hover:text-gold-400">Home</a>
+            <a href="#gallery" class="block py-2 hover:text-gold-400">Gallery</a>
+            <a href="#services" class="block py-2 hover:text-gold-400">Services & Prices</a>
+            <a href="#appointment" class="block py-2 hover:text-gold-400">Book Online</a>
+            <a href="#payment" class="block py-2 hover:text-gold-400">Payment Details</a>
+            <button onclick="openAdminModal()" class="w-full text-center bg-gold-500 text-black py-2 rounded font-bold mt-2">Admin Portal</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        
+        <!-- Hero Section -->
+        <section id="home" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center relative">
+            <div class="inline-block mb-4 px-4 py-1.5 rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-400 text-xs font-semibold uppercase tracking-widest animate-pulse">
+                Welcome to محبوب سائين Salon
+            </div>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6">
+                Redefining Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-amber-200">Signature Style</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg text-gray-400 mb-10">
+                Experience world-class haircuts, beard trimming, and professional grooming by Ali Murtaza. Book your appointment or connect via WhatsApp instantly!
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#appointment" class="bg-gold-500 hover:bg-gold-600 text-black px-8 py-4 rounded-xl font-bold text-lg transition shadow-xl shadow-gold-500/20 flex items-center gap-3">
+                    <i class="fa-regular fa-calendar-check"></i> Book Online Now
+                </a>
+                <a href="https://wa.me/923413274132" target="_blank" class="glass-card hover:bg-gray-800 text-white px-8 py-4 rounded-xl font-bold text-lg transition flex items-center gap-3 border border-gray-700">
+                    <i class="fa-brands fa-whatsapp text-green-400 text-xl"></i> WhatsApp Booking
+                </a>
+            </div>
+        </section>
+
+        <!-- Haircut Gallery Section -->
+        <section id="gallery" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-3">Haircut Gallery</h2>
+                <p class="text-gray-400">Explore our latest cuts, fades, and styling works.</p>
+            </div>
+            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Gallery items rendered via JS -->
+            </div>
+        </section>
+
+        <!-- Services & Prices Section -->
+        <section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-3">Services & Prices</h2>
+                <p class="text-gray-400">Affordable premium grooming packages tailored for you.</p>
+            </div>
+            <div id="services-list" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <!-- Services rendered via JS -->
+            </div>
+        </section>
+
+        <!-- Online Appointment Section -->
+        <section id="appointment" class="max-w-3xl mx-auto px-4 py-16">
+            <div class="glass-card p-8 rounded-2xl shadow-2xl">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-white mb-2">Book Online Appointment</h2>
+                    <p class="text-gray-400 text-sm">Fill in your details and we will confirm your slot.</p>
+                </div>
+                <form id="appointment-form" onsubmit="handleAppointment(event)" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Your Full Name</label>
+                        <input type="text" id="cust-name" required class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500" placeholder="e.g. Ahmed Ali">
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
+                            <input type="tel" id="cust-phone" required class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500" placeholder="03XXXXXXXXX">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Select Service</label>
+                            <select id="cust-service" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500">
+                                <!-- Options populated via JS -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Date</label>
+                            <input type="date" id="cust-date" required class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Time Slot</label>
+                            <input type="time" id="cust-time" required class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-gold-500 hover:bg-gold-600 text-black font-bold py-4 rounded-xl transition shadow-lg shadow-gold-500/20 text-lg">
+                        Confirm Appointment
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Payment Details Section -->
+        <section id="payment" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-3">Payment Methods</h2>
+                <p class="text-gray-400">Send payments securely via JazzCash or Easypaisa.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                <!-- JazzCash Card -->
+                <div class="glass-card p-6 rounded-2xl border-t-4 border-red-500 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xl font-bold text-white">JazzCash</span>
+                            <span class="bg-red-500/20 text-red-400 text-xs px-3 py-1 rounded-full font-semibold">Mobile Wallet</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-2">Account Title: <strong class="text-white">محبوب سائين (Ali Murtaza)</strong></p>
+                        <p class="text-2xl font-mono font-bold text-white mb-4" id="jc-num">03443930611</p>
+                    </div>
+                    <button onclick="copyToClipboard('03443930611', this)" class="w-full bg-gray-800 hover:bg-gray-700 text-gray-200 py-3 rounded-lg font-semibold transition flex items-center justify-center gap-2 border border-gray-700">
+                        <i class="fa-regular fa-copy"></i> Copy Number
+                    </button>
+                </div>
+                <!-- Easypaisa Card -->
+                <div class="glass-card p-6 rounded-2xl border-t-4 border-green-500 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xl font-bold text-white">Easypaisa</span>
+                            <span class="bg-green-500/20 text-green-400 text-xs px-3 py-1 rounded-full font-semibold">Mobile Wallet</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-2">Account Title: <strong class="text-white">محبوب سائين (Ali Murtaza)</strong></p>
+                        <p class="text-2xl font-mono font-bold text-white mb-4" id="ep-num">03403055865</p>
+                    </div>
+                    <button onclick="copyToClipboard('03403055865', this)" class="w-full bg-gray-800 hover:bg-gray-700 text-gray-200 py-3 rounded-lg font-semibold transition flex items-center justify-center gap-2 border border-gray-700">
+                        <i class="fa-regular fa-copy"></i> Copy Number
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-card border-t border-gray-800 mt-20 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div>
+                <h3 class="text-xl font-bold text-white mb-1">ALI MURTAZA SALON (محبوب سائين)</h3>
+                <p class="text-gray-400 text-sm">Email: ameerali886@gmail.com | Phone: 03413274132</p>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://wa.me/923413274132" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-gold-500 hover:text-black transition">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="mailto:ameerali886@gmail.com" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-gold-500 hover:text-black transition">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Admin Login / Portal Modal -->
+    <div id="admin-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden px-4">
+        <div class="glass-card w-full max-w-2xl p-8 rounded-2xl relative border border-gray-700 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <!-- Login View -->
+            <div id="admin-login-view">
+                <div class="text-center mb-6">
+                    <div class="w-12 h-12 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Admin Portal Login</h3>
+                    <p class="text-gray-400 text-sm">Enter credentials to manage prices and photos.</p>
+                </div>
+                <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-1">Username</label>
+                        <input type="text" id="admin-user" required class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500" placeholder="admin">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-1">Password</label>
+                        <input type="password" id="admin-pass" required class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500" placeholder="admin123">
+                    </div>
+                    <button type="submit" class="w-full bg-gold-500 hover:bg-gold-600 text-black font-bold py-3 rounded-lg transition">Login</button>
+                </form>
+            </div>
+
+            <!-- Dashboard View -->
+            <div id="admin-dashboard-view" class="hidden space-y-8">
+                <div class="flex items-center justify-between border-b border-gray-800 pb-4">
+                    <div>
+                        <h3 class="text-2xl font-bold text-white">Admin Dashboard</h3>
+                        <p class="text-gold-400 text-sm">Logged in as محبوب سائين (Ali Murtaza)</p>
+                    </div>
+                    <button onclick="logoutAdmin()" class="bg-red-500/20 text-red-400 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-500 hover:text-white transition">Logout</button>
+                </div>
+
+                <!-- Admin Account Settings -->
+                <div class="bg-gray-900/70 border border-gray-700 rounded-xl p-5">
+                    <h4 class="text-lg font-bold text-white mb-3">Admin Account Settings</h4>
+                    <form onsubmit="updateAdminAccount(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-sm text-gray-300 mb-1">Admin Email</label>
+                            <input type="email" id="admin-new-email" required class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm" placeholder="admin@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-300 mb-1">New Password</label>
+                            <input type="password" id="admin-new-password" minlength="6" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm" placeholder="Leave blank to keep current password">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="block text-sm text-gray-300 mb-1">Confirm New Password</label>
+                            <input type="password" id="admin-confirm-password" minlength="6" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm" placeholder="Confirm new password">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <button type="submit" class="bg-gold-500 hover:bg-gold-600 text-black font-bold px-5 py-2 rounded-lg">Save Account Changes</button>
+                            <p class="text-gray-500 text-xs mt-2">Leave both password fields blank if you only want to change the email.</p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Manage Services & Prices -->
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-3">Add / Edit Services & Prices</h4>
+                    <form onsubmit="addService(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+                        <input type="text" id="new-srv-name" placeholder="Service Name" required class="bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm">
+                        <input type="text" id="new-srv-price" placeholder="Price (e.g. Rs. 500)" required class="bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm">
+                        <button type="submit" class="bg-gold-500 hover:bg-gold-600 text-black font-bold py-2 rounded-lg text-sm">Add Service</button>
+                    </form>
+                    <div id="admin-services-list" class="space-y-2 max-h-40 overflow-y-auto"></div>
+                </div>
+
+                <!-- Manage Gallery Photos -->
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-3">Add Gallery Image</h4>
+                    <form onsubmit="addGalleryItem(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+                        <input type="text" id="new-img-title" placeholder="Haircut Title" required class="bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm">
+                        <input type="file" id="new-img-file" accept="image/*" required class="bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm">
+                        <button type="submit" class="bg-gold-500 hover:bg-gold-600 text-black font-bold py-2 rounded-lg text-sm">Upload Photo</button>
+                        <p class="sm:col-span-3 text-gray-500 text-xs">Choose an image from your device. Images are resized before saving to help reduce storage use.</p>
+                    </form>
+                    <div id="admin-gallery-list" class="space-y-2 max-h-40 overflow-y-auto"></div>
+                </div>
+
+                <!-- Appointments Received -->
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-3">Client Appointments Received</h4>
+                    <div id="admin-appointments-list" class="space-y-3 max-h-60 overflow-y-auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic & 3D Particle Animation -->
+    <script>
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const particles = [];
+        const particleCount = 250;
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: (Math.random() - 0.5) * width * 1.5,
+                y: (Math.random() - 0.5) * height * 1.5,
+                z: Math.random() * width,
+                size: Math.random() * 2 + 0.5,
+                color: Math.random() > 0.3 ? '#eab308' : '#ffffff'
+            });
+        }
+
+        function animateParticles() {
+            ctx.fillStyle = '#0b0f19';
+            ctx.fillRect(0, 0, width, height);
+
+            const cx = width / 2;
+            const cy = height / 2;
+
+            particles.forEach(p => {
+                p.z -= 0.8;
+                if (p.z <= 0) p.z = width;
+
+                const k = 250 / p.z;
+                const px = p.x * k + cx;
+                const py = p.y * k + cy;
+
+                if (px >= 0 && px <= width && py >= 0 && py <= height) {
+                    const size = Math.max(0, p.size * k);
+                    ctx.fillStyle = p.color;
+                    ctx.beginPath();
+                    ctx.arc(px, py, size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            });
+
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // Demo admin account settings (stored in this browser only).
+        if (!localStorage.getItem('am_admin_account')) {
+            localStorage.setItem('am_admin_account', JSON.stringify({
+                email: 'admin@example.com',
+                password: 'admin123'
+            }));
+        }
+
+        if (!localStorage.getItem('am_services')) {
+            localStorage.setItem('am_services', JSON.stringify([
+                { id: 1, name: 'Classic Haircut & Styling', price: 'Rs. 400' },
+                { id: 2, name: 'Beard Trim & Shape Up', price: 'Rs. 250' },
+                { id: 3, name: 'VIP Grooming Package (Hair + Beard + Facial)', price: 'Rs. 1200' },
+                { id: 4, name: 'Hair Coloring / Dye', price: 'Rs. 800' }
+            ]));
+        }
+
+        if (!localStorage.getItem('am_gallery')) {
+            localStorage.setItem('am_gallery', JSON.stringify([
+                { id: 1, title: 'Modern Skin Fade', url: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600&q=80' },
+                { id: 2, title: 'Classic Pompadour', url: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80' },
+                { id: 3, title: 'Sharp Beard Styling', url: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80' }
+            ]));
+        }
+
+        if (!localStorage.getItem('am_appointments')) {
+            localStorage.setItem('am_appointments', JSON.stringify([]));
+        }
+
+        function renderWebsite() {
+            const galleryGrid = document.getElementById('gallery-grid');
+            const galleryData = JSON.parse(localStorage.getItem('am_gallery'));
+            galleryGrid.innerHTML = galleryData.map(item => `
+                <div class="glass-card rounded-2xl overflow-hidden group shadow-lg">
+                    <div class="h-64 overflow-hidden">
+                        <img src="${item.url}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="text-white font-semibold text-lg">${item.title}</h3>
+                    </div>
+                </div>
+            `).join('');
+
+            const servicesList = document.getElementById('services-list');
+            const custServiceSelect = document.getElementById('cust-service');
+            const servicesData = JSON.parse(localStorage.getItem('am_services'));
+            
+            servicesList.innerHTML = servicesData.map(s => `
+                <div class="glass-card p-5 rounded-xl flex items-center justify-between border border-gray-800">
+                    <div>
+                        <h4 class="text-white font-semibold text-lg">${s.name}</h4>
+                    </div>
+                    <span class="text-gold-400 font-bold text-lg">${s.price}</span>
+                </div>
+            `).join('');
+
+            custServiceSelect.innerHTML = servicesData.map(s => `
+                <option value="${s.name} (${s.price})">${s.name} - ${s.price}</option>
+            `).join('');
+        }
+        renderWebsite();
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function copyToClipboard(text, btn) {
+            navigator.clipboard.writeText(text);
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = `<i class="fa-solid fa-check text-green-400"></i> Copied!`;
+            setTimeout(() => btn.innerHTML = originalHTML, 2000);
+        }
+
+        function handleAppointment(e) {
+            e.preventDefault();
+            const name = document.getElementById('cust-name').value;
+            const phone = document.getElementById('cust-phone').value;
+            const service = document.getElementById('cust-service').value;
+            const date = document.getElementById('cust-date').value;
+            const time = document.getElementById('cust-time').value;
+
+            const appointments = JSON.parse(localStorage.getItem('am_appointments'));
+            appointments.push({ id: Date.now(), name, phone, service, date, time });
+            localStorage.setItem('am_appointments', JSON.stringify(appointments));
+
+            alert('Appointment booked successfully! We will contact you soon.');
+            document.getElementById('appointment-form').reset();
+        }
+
+        function openAdminModal() {
+            document.getElementById('admin-modal').classList.remove('hidden');
+        }
+        function closeAdminModal() {
+            document.getElementById('admin-modal').classList.add('hidden');
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('admin-user').value.trim();
+            const p = document.getElementById('admin-pass').value;
+            const account = JSON.parse(localStorage.getItem('am_admin_account') || '{}');
+
+            if ((u === 'admin' || u.toLowerCase() === (account.email || '').toLowerCase()) && p === account.password) {
+                document.getElementById('admin-login-view').classList.add('hidden');
+                document.getElementById('admin-dashboard-view').classList.remove('hidden');
+                renderAdminDashboard();
+            } else {
+                alert('Invalid login details. Use username admin or your saved admin email, with your current password.');
+            }
+        }
+
+        function logoutAdmin() {
+            document.getElementById('admin-dashboard-view').classList.add('hidden');
+            document.getElementById('admin-login-view').classList.remove('hidden');
+            document.getElementById('admin-user').value = '';
+            document.getElementById('admin-pass').value = '';
+        }
+
+        function updateAdminAccount(e) {
+            e.preventDefault();
+            const email = document.getElementById('admin-new-email').value.trim();
+            const newPassword = document.getElementById('admin-new-password').value;
+            const confirmPassword = document.getElementById('admin-confirm-password').value;
+
+            if (newPassword && newPassword.length < 6) {
+                alert('Password must be at least 6 characters long.');
+                return;
+            }
+            if (newPassword !== confirmPassword) {
+                alert('New password and confirmation do not match.');
+                return;
+            }
+
+            const account = JSON.parse(localStorage.getItem('am_admin_account') || '{}');
+            account.email = email;
+            if (newPassword) account.password = newPassword;
+            localStorage.setItem('am_admin_account', JSON.stringify(account));
+
+            document.getElementById('admin-new-password').value = '';
+            document.getElementById('admin-confirm-password').value = '';
+            alert('Admin account settings updated successfully.');
+        }
+
+        function renderAdminDashboard() {
+            const account = JSON.parse(localStorage.getItem('am_admin_account') || '{}');
+            const emailInput = document.getElementById('admin-new-email');
+            if (emailInput) emailInput.value = account.email || '';
+
+            const services = JSON.parse(localStorage.getItem('am_services'));
+            document.getElementById('admin-services-list').innerHTML = services.map(s => `
+                <div class="flex items-center justify-between bg-gray-900 p-3 rounded-lg border border-gray-800 text-sm">
+                    <div><span class="text-white font-medium">${s.name}</span> - <span class="text-gold-400">${s.price}</span></div>
+                    <button onclick="deleteService(${s.id})" class="text-red-400 hover:text-red-300"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+
+            const gallery = JSON.parse(localStorage.getItem('am_gallery'));
+            document.getElementById('admin-gallery-list').innerHTML = gallery.map(g => `
+                <div class="flex items-center justify-between bg-gray-900 p-3 rounded-lg border border-gray-800 text-sm">
+                    <span class="text-white font-medium">${g.title}</span>
+                    <button onclick="deleteGallery(${g.id})" class="text-red-400 hover:text-red-300"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+
+            const appointments = JSON.parse(localStorage.getItem('am_appointments'));
+            if (appointments.length === 0) {
+                document.getElementById('admin-appointments-list').innerHTML = `<p class="text-gray-500 text-sm text-center py-4">No appointments yet.</p>`;
+            } else {
+                document.getElementById('admin-appointments-list').innerHTML = appointments.map(a => `
+                    <div class="bg-gray-900 p-3 rounded-lg border border-gray-800 text-sm space-y-1">
+                        <div class="flex justify-between font-bold text-white">
+                            <span>${a.name} (${a.phone})</span>
+                            <button onclick="deleteAppointment(${a.id})" class="text-red-400 hover:text-red-300"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                        <div class="text-gray-400 text-xs">Service: ${a.service}</div>
+                        <div class="text-gold-400 text-xs">Date: ${a.date} at ${a.time}</div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function addService(e) {
+            e.preventDefault();
+            const name = document.getElementById('new-srv-name').value;
+            const price = document.getElementById('new-srv-price').value;
+            const services = JSON.parse(localStorage.getItem('am_services'));
+            services.push({ id: Date.now(), name, price });
+            localStorage.setItem('am_services', JSON.stringify(services));
+            document.getElementById('new-srv-name').value = '';
+            document.getElementById('new-srv-price').value = '';
+            renderWebsite();
+            renderAdminDashboard();
+        }
+
+        function deleteService(id) {
+            let services = JSON.parse(localStorage.getItem('am_services'));
+            services = services.filter(s => s.id !== id);
+            localStorage.setItem('am_services', JSON.stringify(services));
+            renderWebsite();
+            renderAdminDashboard();
+        }
+
+        function addGalleryItem(e) {
+            e.preventDefault();
+            const title = document.getElementById('new-img-title').value.trim();
+            const fileInput = document.getElementById('new-img-file');
+            const file = fileInput.files && fileInput.files[0];
+
+            if (!file || !file.type.startsWith('image/')) {
+                alert('Please choose a valid image file.');
+                return;
+            }
+
+            // Resize/compress the uploaded image to reduce local browser storage usage.
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const image = new Image();
+                image.onload = function() {
+                    const maxSide = 1200;
+                    const scale = Math.min(1, maxSide / Math.max(image.width, image.height));
+                    const canvas = document.createElement('canvas');
+                    canvas.width = Math.max(1, Math.round(image.width * scale));
+                    canvas.height = Math.max(1, Math.round(image.height * scale));
+                    const context = canvas.getContext('2d');
+                    context.drawImage(image, 0, 0, canvas.width, canvas.height);
+                    const imageData = canvas.toDataURL('image/jpeg', 0.78);
+
+                    try {
+                        const gallery = JSON.parse(localStorage.getItem('am_gallery') || '[]');
+                        gallery.push({ id: Date.now(), title: title, url: imageData });
+                        localStorage.setItem('am_gallery', JSON.stringify(gallery));
+                        document.getElementById('new-img-title').value = '';
+                        fileInput.value = '';
+                        renderWebsite();
+                        renderAdminDashboard();
+                        alert('Photo uploaded successfully.');
+                    } catch (error) {
+                        alert('Could not save this image. Browser storage may be full. Try a smaller image or remove old gallery photos.');
+                    }
+                };
+                image.onerror = function() {
+                    alert('The selected image could not be read. Please choose another image.');
+                };
+                image.src = event.target.result;
+            };
+            reader.onerror = function() {
+                alert('Could not read the selected image file.');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function deleteGallery(id) {
+            let gallery = JSON.parse(localStorage.getItem('am_gallery'));
+            gallery = gallery.filter(g => g.id !== id);
+            localStorage.setItem('am_gallery', JSON.stringify(gallery));
+            renderWebsite();
+            renderAdminDashboard();
+        }
+
+        function deleteAppointment(id) {
+            let appointments = JSON.parse(localStorage.getItem('am_appointments'));
+            appointments = appointments.filter(a => a.id !== id);
+            localStorage.setItem('am_appointments', JSON.stringify(appointments));
+            renderAdminDashboard();
+        }
+    </script>
+</body>
+</html>
